@@ -6,7 +6,6 @@ import threading
 
 class BarComponent:
     interval = 60
-    name = 'BaseComponent'
 
     def __init__(self, sign_no, update_func):
         self.value = ''

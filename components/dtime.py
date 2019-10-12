@@ -3,9 +3,9 @@ from datetime import datetime
 
 
 class TimeCar(BarComponent):
-    interval = 1
+    interval = 10
 
     def update_value(self):
-        t = datetime.now().strftime('%a %d %b %H:%M:%S')
-        self.value = '  {}'.format(t)
+        t = datetime.now().strftime('%a %d %b %H:%M')
+        self.value = '  \x04 {} \x01'.format(t)
         return self.value
