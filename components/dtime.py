@@ -7,5 +7,5 @@ class TimeCar(BarComponent):
 
     def update_value(self):
         t = datetime.now().strftime('%a %d %b %H:%M')
-        self.value = '  \x04 {} \x01'.format(t)
+        self.value = '  {} '.format(t)
         return self.value

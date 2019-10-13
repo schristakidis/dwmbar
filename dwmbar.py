@@ -20,15 +20,20 @@ import signal
 import logging
 
 from docopt import docopt
+
+from components.colors import print_normal
 from components.volume import VolumeCar
 from components.dtime import TimeCar
 from components.kb_layout import KBLayoutCar
+from components.mediaplayer import SpotifyCar
 
 logger = logging.getLogger('spam_application')
 logger.setLevel(logging.DEBUG)
 fh = logging.FileHandler('/tmp/dwmbar.log')
 fh.setLevel(logging.DEBUG)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 fh.setFormatter(formatter)
 logger.addHandler(fh)
 
@@ -50,6 +55,11 @@ MODULES = {
         'module': KBLayoutCar,
         'sign_no': 2,
         'pos': 2
+    },
+    'spotify': {
+        'module': SpotifyCar,
+        'sign_no': 3,
+        'pos': 100
     }
 }
 
@@ -81,7 +91,7 @@ class Bar:
         status = (delimeter).join([
             c['value'] for c in self.sorted_cars
         ])
-        status = 'echo -e "{}"'.format(status)
+        status = 'echo -e "{}"'.format(print_normal(status))
         subprocess.getoutput('xsetroot -name "$({})"'.format(status))
 
     def run(self):
