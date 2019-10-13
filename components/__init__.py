@@ -5,7 +5,7 @@ import threading
 
 
 class BarComponent:
-    interval = 60
+    interval = None
 
     def __init__(self, sign_no, update_func):
         self.value = ''
@@ -15,8 +15,9 @@ class BarComponent:
 
         signal.signal(signal.SIGUSR1 + self.sign_no, self.handle_signal)
 
-        thread = threading.Thread(target=self.set_interval)
-        thread.start()
+        if self.interval:
+            thread = threading.Thread(target=self.set_interval)
+            thread.start()
 
     def set_interval(self):
         while True:

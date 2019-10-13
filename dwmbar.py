@@ -22,6 +22,7 @@ import logging
 from docopt import docopt
 from components.volume import VolumeCar
 from components.dtime import TimeCar
+from components.kb_layout import KBLayoutCar
 
 logger = logging.getLogger('spam_application')
 logger.setLevel(logging.DEBUG)
@@ -44,6 +45,11 @@ MODULES = {
         'module': TimeCar,
         'sign_no': 0,
         'pos': -1
+    },
+    'keyboard': {
+        'module': KBLayoutCar,
+        'sign_no': 2,
+        'pos': 2
     }
 }
 

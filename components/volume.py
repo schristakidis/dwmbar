@@ -4,7 +4,7 @@ from . import BarComponent
 
 
 class VolumeCar(BarComponent):
-    interval = 60
+    interval = None
 
     def update_value(self):
         mute = subprocess.getoutput('pulsemixer --get-mute')
@@ -26,5 +26,5 @@ class VolumeCar(BarComponent):
         else:
             icon = "🔉"
 
-        self.value = '{} {}'.format(icon, vol)
+        self.value = '{} {}%'.format(icon, vol)
         return self.value
